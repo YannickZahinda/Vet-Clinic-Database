@@ -29,8 +29,12 @@ WHERE name LIKE '%mon';
 UPDATE animals
 SET species='pokemon' WHERE species IS null;
 
+  --verify the changes before commit :
+  SELECT species from where species='pokemon';
 --Commit the transaction.
 COMMIT;
+  --verify after commit :
+  SELECT species from where species='pokemon';
 
 --Now, take a deep breath and... Inside a transaction delete all records in the animals table, 
 BEGIN;
