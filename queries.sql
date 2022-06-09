@@ -39,6 +39,9 @@ COMMIT;
 --Now, take a deep breath and... Inside a transaction delete all records in the animals table, 
 BEGIN;
 DELETE FROM animals;
+  --verification of changes after deletion
+  SELECT * FROM animals;
+
 --then roll back the transaction.
 ROLLBACK;
 
