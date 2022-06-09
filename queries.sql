@@ -16,6 +16,8 @@ SET species='unspecified';
 
 --roll back the change and verify that species columns went back to the state before transaction.
 ROLLBACK;
+--Checking if the species has the null value after the ROLLBACK;
+SELECT * FROM animals WHERE species='unspecified';
 
 --Update the animals table by setting the species column to digimon for all animals that have a name ending in mon.
 BEGIN;
