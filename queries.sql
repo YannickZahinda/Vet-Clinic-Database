@@ -84,3 +84,21 @@ BEGIN;
   --What is the average number of escape attempts per animal type of those born between 1990 and 2000?
   SELECT species, AVG(escape_attempt) from animals where EXTRACT(YEAR FROM date_of_birth) between 1990 and 2000 group by species;
 
+
+SELECT full_name AS owner, name AS animal FROM owners JOIN animals ON owners.id = animals.owner_id WHERE owners.full_name = 'Melody Pond';
+
+SELECT animals.name AS animal, species.name AS species FROM species S JOIN animals A ON S.id = A.species_id WHERE S.name = 'Pokemon';
+
+SELECT O.full_name AS Owner, A.name AS Animals FROM owners O LEFT JOIN animals A ON O.id = A.owner_id;
+
+SELECT S.name AS Species, COUNT(A.name) AS Total_number FROM species S JOIN animals A ON S.id = A.species_id GROUP BY S.name;
+
+SELECT O.full_name as owner, A.name as animal, S.name as type FROM owners O JOIN animals A ON O.id = A.owner_id JOIN species S ON S.id = A.species_id WHERE O.full_name = 'Jennifer Orwell' AND S.name = 'Digimon';
+
+SELECT O.full_name as owner, A.name as animal FROM owners O JOIN animals A ON O.id = A.owner_id WHERE O.full_name = 'Dean Winchester' AND A.escape_attempts = 0;
+SELECT agg.full_name as owner, count as Total_number FROM (
+  SELECT full_name, count(a.owner_id) FROM owners O
+  JOIN animals A ON O.id = A.owner_id GROUP BY O.full_name) AS agg 
+  WHERE count = (SELECT MAX(count) FROM (SELECT full_name, count(a.owner_id) FROM owners O
+  JOIN animals A ON O.id = A.owner_id GROUP BY O.full_name) AS agg
+  );
