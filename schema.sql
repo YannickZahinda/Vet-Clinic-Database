@@ -30,3 +30,5 @@ CREATE TABLE visits (id INT GENERATED ALWAYS AS IDENTITY, date_of_visit DATE, an
 
 
 ALTER TABLE owners ADD COLUMN email varchar(250);
+
+CREATE INDEX full_name_asc ON owners(full_name ASC);

@@ -185,3 +185,8 @@ WHERE MS.Total_number = (SELECT MAX(MS.Total_number) FROM
   WHERE Vt.name = 'Maisy Smith'
   GROUP BY A.species_id) as MS)) AS MS2
   ON S.id = MS2.species_id;     
+
+
+
+SELECT COUNT(*) FROM visits where animal_id = 4;
+SELECT * FROM visits where vet_id = 2;
