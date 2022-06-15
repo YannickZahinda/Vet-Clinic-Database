@@ -28,3 +28,13 @@ CREATE TABLE specializations (id INT GENERATED ALWAYS AS IDENTITY, species_id IN
 
 CREATE TABLE visits (id INT GENERATED ALWAYS AS IDENTITY, date_of_visit DATE, animal_id INT, vet_id INT, PRIMARY KEY (id), FOREIGN KEY (animal_id) REFERENCES animals (id), FOREIGN KEY (vet_id) REFERENCES vets (id));
 
+
+ALTER TABLE owners ADD COLUMN email varchar(250);
+
+
+
+CREATE INDEX full_name_asc ON owners(full_name ASC);
+
+CREATE INDEX vet_id_asc ON visits(vet_id ASC);
+
+CREATE INDEX visit_asc ON visits(animal_id ASC);
