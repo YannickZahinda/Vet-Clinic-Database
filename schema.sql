@@ -36,3 +36,5 @@ ALTER TABLE owners ADD COLUMN email varchar(250);
 CREATE INDEX full_name_asc ON owners(full_name ASC);
 
 CREATE INDEX vet_id_asc ON visits(vet_id ASC);
+
+CREATE INDEX visit_asc ON visits(animal_id ASC);
